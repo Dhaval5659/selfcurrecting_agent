@@ -1,0 +1,10 @@
+langgraph
+langchain
+langchain-core
+psycopg2-binary
+requests
+python-dotenv
+
+# Pick ONE LLM provider client depending on what you use:
+# langchain-openai
+# langchain-anthropic
