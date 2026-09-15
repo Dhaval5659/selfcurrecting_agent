@@ -9,4 +9,5 @@ CREATE TABLE IF NOT EXISTS weather_readings (
 INSERT INTO weather_readings (city, month, avg_temp_celsius) VALUES
     ('Ahmedabad', 'September', 32.5),
     ('Mumbai', 'September', 29.0),
-    ('Delhi', 'September', 33.0);
+    ('Delhi', 'September', 33.0),
+    

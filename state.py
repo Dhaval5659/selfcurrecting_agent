@@ -1,9 +1,17 @@
-from typing import TypedDict, Optional, List, Dict, Any
+from typing import TypedDict, Optional, List, Dict, Any, Annotated
+from langchain_core.messages import BaseMessage
+from langgraph.graph.message import add_messages
 
 
 class AgentState(TypedDict):
     # --- the task itself ---
     question: str                     # the user's original request, e.g. "Is it colder in Ahmedabad than the DB avg temp for last month?"
+
+    # --- the ReAct conversation the LLM reasons over ---
+    # `add_messages` is a LangGraph reducer: instead of each node OVERWRITING
+    # this list, new messages get APPENDED to it. This is what lets the agent
+    # "remember" its own prior tool calls and the validator's feedback.
+    messages: Annotated[List[BaseMessage], add_messages]
 
     # --- tool outputs (filled in as nodes run) ---
     db_result: Optional[Any]          # whatever the DB query tool returns
